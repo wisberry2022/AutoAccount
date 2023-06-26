@@ -23,11 +23,6 @@ public class AutoTradingManagerTest {
         atm = new AutoTradingManager(Arrays.asList(lifeAccount, monthlySpendAccount));
     }
 
-//    @Test
-//    public void checkAccount() {
-//        Assertions.assertEquals(lifeAccount.getBalance(), 1000000);
-//    }
-
     @Test
     public void deposit() {
         atm.autoDeposit("일반계좌", "월간정기출금액");
