@@ -1,22 +1,55 @@
 package org.program.account;
 
-public interface Account {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    void deposit(long balance);
+public class Account {
 
-    long withdrawal(long balance);
+    private static final Map<String, Account> accountInfo = new HashMap<>();
+    private final Map<String, Long> autoDeposits;
 
-    long getBalance();
+    private final String name;
+    private long balance;
 
-    long getDetailAutoTransferMoney(String inquiry);
+    public Account(String name, long balance) {
+        this.name = name;
+        this.balance = balance;
+        autoDeposits = new HashMap<>();
+        accountInfo.put(name, this);
+    }
 
-    String getName();
+    public void deposit(long amount) {
+        balance += amount;
+    }
 
-    long getTotalAutoTransferAmount();
+    public long withdrawal(long amount) {
+        balance -= amount;
+        return amount;
+    }
 
-    void setAutoTransfer(String targetAccount, long amount);
+    public void setAutoDeposit(String name, long amount){
+        if(accountInfo.containsKey(name)) {
+            autoDeposits.put(name, amount);
+        };
+    }
 
-    void showTotalAutoTransferData();
+    public void autoDeposit(String name) {
+        if(autoDeposits.containsKey(name)) {
+            accountInfo.get(name).deposit(autoDeposits.get(name));
+            withdrawal(autoDeposits.get(name));
+        }
+    }
 
-    long getTotalAmount();
+    public void showAutoDeposit() {
+        autoDeposits.keySet().stream()
+                .forEach(aName -> System.out.println(
+                        aName + " " + autoDeposits.get(aName)
+                ));
+    }
+
+    public long getBalance() {
+        return balance;
+    }
 }

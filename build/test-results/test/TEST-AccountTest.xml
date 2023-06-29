@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AccountTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-06-29T11:49:59" hostname="BOOK-UISPIU2BK1" time="0.015">
+  <properties/>
+  <testcase name="doAutoDeposit()" classname="AccountTest" time="0.009"/>
+  <testcase name="dataInit()" classname="AccountTest" time="0.002"/>
+  <testcase name="setAutoDeposit()" classname="AccountTest" time="0.002"/>
+  <system-out><![CDATA[true
+적금통장 5000
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

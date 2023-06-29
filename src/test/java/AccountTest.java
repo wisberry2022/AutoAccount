@@ -2,37 +2,36 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.program.account.Account;
-import org.program.account.AccountImpl;
+import org.program.data.Data;
+
+import java.util.HashMap;
 
 public class AccountTest {
+    
+    private Account normal;
 
-    private Account monthlySpendAccount;
-    private Account lifeAccount;
-    private Account privateSavingAccount;
+    private Account installment;
+
+    private Data data;
 
     @BeforeEach
-    public void init() {
-        monthlySpendAccount = new AccountImpl("월간정기출금액");
-        lifeAccount = new AccountImpl("일반통장");
-        privateSavingAccount = new AccountImpl("개인저축통장");
+    public void setFixture() {
+        normal = new Account("일반통장", 30000);
+        installment = new Account("적금통장", 0);
+        data = Data.getInstance();
     }
 
     @Test
-    public void getTotalAmount() {
-        Assertions.assertEquals(lifeAccount.getTotalAmount(), 0);
+    public void setAutoDeposit() {
+        normal.setAutoDeposit("적금통장", 5000);
+        normal.showAutoDeposit();
     }
 
     @Test
-    public void setAutoTransfer() {
-        lifeAccount.setAutoTransfer("월간정기출금액", 300000);
-        lifeAccount.setAutoTransfer("개인저축통장", 500000);
-        Assertions.assertEquals(lifeAccount.getTotalAutoTransferAmount(), 300000+500000);
+    public void doAutoDeposit() {
+        normal.setAutoDeposit("적금통장", 5000);
+        normal.autoDeposit("적금통장");
+        Assertions.assertEquals(installment.getBalance(), 5000);
+        Assertions.assertEquals(normal.getBalance(), 25000);
     }
-
-    @Test
-    public void getAutoTransferMoney() {
-        lifeAccount.setAutoTransfer("월간정기출금액", 300000);
-        Assertions.assertEquals(lifeAccount.getDetailAutoTransferMoney("월간정기출금액"), 300000);
-    }
-
 }
