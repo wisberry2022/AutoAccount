@@ -26,4 +26,12 @@ public class Data {
         return data;
     }
 
+    public void setAccount(Account account) {
+        data.put(account.getName(), account);
+    }
+
+    public Account getAccount(String name) {
+        return data.get(name);
+    }
+
 }
