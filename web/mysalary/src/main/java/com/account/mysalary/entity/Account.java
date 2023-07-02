@@ -34,4 +34,13 @@ public class Account {
     @OneToMany(mappedBy = "withdrawal", cascade = CascadeType.ALL)
     private List<AutoDeposit> autoDeposits = new ArrayList<>();
 
+    public void deposit(long amount) {
+        balance += amount;
+    }
+
+    public long withdrawal(long amount) {
+        balance -= amount;
+        return amount;
+    }
+
 }

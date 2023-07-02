@@ -1,6 +1,7 @@
 package com.account.mysalary.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Getter
+@Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class AutoDeposit {
@@ -25,6 +27,9 @@ public class AutoDeposit {
 
     @Column(nullable = false)
     private Long amount;
+
+    @Column(nullable = false)
+    private String name;
 
     private Date date;
 

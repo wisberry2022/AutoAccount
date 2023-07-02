@@ -1,25 +1,63 @@
 package com.account.mysalary.service;
 
+import com.account.mysalary.dto.DebitDto;
+import com.account.mysalary.dto.InquiryDto;
+import com.account.mysalary.dto.TransferDto;
 import com.account.mysalary.dto.OpenDto;
+import com.account.mysalary.entity.Account;
 import com.account.mysalary.mapper.AccountMapper;
+import com.account.mysalary.mapper.AutoDepositMapper;
+import com.account.mysalary.projection.TotalExpensesInfo;
 import com.account.mysalary.repository.AccountRepository;
+import com.account.mysalary.repository.AutoDepositRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final AutoDepositRepository autoRepository;
 
     private final AccountMapper accountMapper;
 
     @Transactional
     public void openAccount(OpenDto dto) {
-        System.out.println(accountMapper.dtoToEntity(dto));
         accountRepository.save(accountMapper.dtoToEntity(dto));
     }
 
+    @Transactional
+    public void deposit(TransferDto dto) {
+        Account target = accountRepository.findByName(dto.getName()).get();
+        target.deposit(dto.getAmount());
+        accountRepository.save(target);
+    }
+
+    @Transactional
+    public void withdrawal(TransferDto dto) {
+        Account target = accountRepository.findByName(dto.getName()).get();
+        target.withdrawal(dto.getAmount());
+        accountRepository.save(target);
+    }
+
+    @Transactional
+    public long getTotalExpenses(String name) {
+        String serial = accountRepository.findSerialByName(name);
+
+        List<TotalExpensesInfo> results = autoRepository.findAutoDepositsByWithdrawal(serial);
+        return results.stream()
+                .map(TotalExpensesInfo::getAmount)
+                .reduce(0L, (a,b) -> a+=b);
+    }
+
+    @Transactional
+    public List<InquiryDto> getAccounts() {
+        List<Account> accounts = accountRepository.findAll();
+        return accountMapper.toDtos(accounts);
+    }
 }
