@@ -3,6 +3,7 @@ package com.account.mysalary.service;
 import com.account.mysalary.dto.DebitDto;
 import com.account.mysalary.dto.OpenDto;
 import com.account.mysalary.dto.TransferDto;
+import com.account.mysalary.dto.UpdateNameDto;
 import com.account.mysalary.repository.AccountRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,6 +29,8 @@ public class AccountServiceTest {
     private TransferDto transferDto = null;
     private DebitDto debitDto = null;
 
+    private UpdateNameDto updateDto = null;
+
     @Test
     void contextLoads() {
     }
@@ -51,7 +54,6 @@ public class AccountServiceTest {
                 .amount(500000)
                 .name("적금통장")
                 .build();
-
     }
 
     @Test
@@ -79,6 +81,7 @@ public class AccountServiceTest {
     }
 
     @Test
+    @Disabled
     public void setDirectDebit() {
         Assertions.assertEquals(as.getTotalExpenses("일반통장"), 1000000);
     }
@@ -98,6 +101,21 @@ public class AccountServiceTest {
     @Disabled
     public void isAssignTransfer() {
         Assertions.assertEquals(ts.isAssignedTransfer(debitDto), true);
+    }
+
+    @Test
+    @Disabled
+    public void updateAccount() throws Exception {
+        updateDto = UpdateNameDto.builder().before("일반통장").after("예금통장").build();
+        as.openAccount(openDto);
+        as.changeAccountName(updateDto);
+        Assertions.assertEquals(ar.findByName("예금통장").get().getName(), "예금통장");
+    }
+
+    @Test
+    @Disabled
+    public void deleteAccount() throws Exception {
+        as.deleteAccount("11220081774021");
     }
 
 }

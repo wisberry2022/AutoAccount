@@ -15,10 +15,13 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Optional<Account> findBySerial(String serial);
 
+    void deleteBySerial(String serial);
+
     @Query("select ac.serial from Account ac where ac.name = :name")
     String findSerialByName(@Param("name") String name);
 
     @Query("select ac.balance from Account ac where ac.name = :name")
     Long findBalanceByName(@Param("name") String name);
+
 
 }

@@ -1,9 +1,6 @@
 package com.account.mysalary.service;
 
-import com.account.mysalary.dto.DebitDto;
-import com.account.mysalary.dto.InquiryDto;
-import com.account.mysalary.dto.TransferDto;
-import com.account.mysalary.dto.OpenDto;
+import com.account.mysalary.dto.*;
 import com.account.mysalary.entity.Account;
 import com.account.mysalary.mapper.AccountMapper;
 import com.account.mysalary.mapper.AutoDepositMapper;
@@ -59,5 +56,21 @@ public class AccountService {
     public List<InquiryDto> getAccounts() {
         List<Account> accounts = accountRepository.findAll();
         return accountMapper.toDtos(accounts);
+    }
+
+    @Transactional
+    public void changeAccountName(UpdateNameDto dto) throws Exception {
+        Optional<Account> target = accountRepository.findByName(dto.getBefore());
+        Optional.of(target.get())
+                .orElseThrow(() -> new Exception("존재하지 않는 계좌입니다!"))
+                .changeName(dto.getAfter());
+    }
+
+    @Transactional
+    public void deleteAccount(String serial) throws Exception {
+        Optional<Account> target = accountRepository.findBySerial(serial);
+        Optional.of(target.get())
+                .orElseThrow(() -> new Exception("존재하지 않는 계좌입니다!"));
+        accountRepository.deleteBySerial(serial);
     }
 }

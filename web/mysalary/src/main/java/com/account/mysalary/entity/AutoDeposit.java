@@ -1,5 +1,6 @@
 package com.account.mysalary.entity;
 
+import com.account.mysalary.dto.UpdateDebitDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Optional;
 
 @Entity
 @Getter
@@ -33,6 +35,10 @@ public class AutoDeposit {
 
     private Date date;
 
-
+    public void changeDebit(UpdateDebitDto dto) {
+        Optional.of(dto).ifPresent(update -> this.deposit = update.getDeposit());
+        Optional.of(dto).ifPresent(update -> this.name = update.getName());
+        Optional.of(dto).ifPresent(update -> this.amount = update.getAmount());
+    }
 
 }
