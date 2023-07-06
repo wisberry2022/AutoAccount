@@ -3,7 +3,6 @@ package com.account.mysalary.controller;
 import com.account.mysalary.common.util.HttpResponseUtil;
 import com.account.mysalary.dto.DebitDto;
 import com.account.mysalary.dto.UpdateDebitDto;
-import com.account.mysalary.service.AccountService;
 import com.account.mysalary.service.DebitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
