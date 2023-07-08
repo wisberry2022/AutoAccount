@@ -1,6 +1,7 @@
 package com.account.mysalary.controller;
 
 import com.account.mysalary.common.util.HttpResponseUtil;
+import com.account.mysalary.dto.DebitDeleteDto;
 import com.account.mysalary.dto.DebitDto;
 import com.account.mysalary.dto.UpdateDebitDto;
 import com.account.mysalary.service.DebitService;
@@ -25,7 +26,6 @@ public class DebitController {
         }catch(Exception e) {
             throw new Exception(e.getMessage());
         }
-
     }
 
     @PostMapping("/api/v1/debit")
@@ -43,4 +43,9 @@ public class DebitController {
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(update), HttpStatus.ACCEPTED);
     }
 
+    @DeleteMapping("/api/v1/debit")
+    public ResponseEntity deleteDebit(@RequestBody DebitDeleteDto dto) throws Exception {
+        debitService.deleteDebit(Long.parseLong(dto.getId()));
+        return new ResponseEntity(HttpResponseUtil.getSuccessCode(), HttpStatus.ACCEPTED);
+    }
 }

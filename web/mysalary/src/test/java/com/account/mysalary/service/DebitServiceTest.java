@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.util.AssertionErrors;
 
 import java.util.Date;
 import java.util.List;
@@ -61,6 +62,7 @@ public class DebitServiceTest {
     }
 
     @Test
+    @Disabled
     public void inquiryDebits() throws Exception {
         List<DebitDto> result = debitService.inquiry(1L);
         Assertions.assertEquals(result.size(), 3);

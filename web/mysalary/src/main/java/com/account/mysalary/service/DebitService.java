@@ -63,4 +63,13 @@ public class DebitService {
         return depositMapper.entitiesToDtos(result);
     }
 
+    @Transactional
+    public void deleteDebit(Long id) throws Exception {
+        Optional<AutoDeposit> target = autoRepository.findById(id);
+        Optional.of(target.get())
+                .orElseThrow(() -> new Exception("정보가 존재하지 않습니다!"));
+        autoRepository.deleteById(id);
+
+    }
+
 }
