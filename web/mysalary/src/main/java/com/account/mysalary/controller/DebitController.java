@@ -7,16 +7,26 @@ import com.account.mysalary.service.DebitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class DebitController {
 
     private final DebitService debitService;
+
+    @GetMapping("/api/v1/debit/{withdrawal}")
+    public ResponseEntity inquiryDebit(@PathVariable String withdrawal) throws Exception {
+        try {
+            List<DebitDto>  result = debitService.inquiry(Long.parseLong(withdrawal));
+            return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.ACCEPTED);
+        }catch(Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
+    }
 
     @PostMapping("/api/v1/debit")
     public ResponseEntity assignTransfer(@RequestBody DebitDto debit) throws Exception {

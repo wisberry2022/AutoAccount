@@ -20,7 +20,6 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final AutoDepositRepository autoRepository;
-
     private final AccountMapper accountMapper;
 
     @Transactional

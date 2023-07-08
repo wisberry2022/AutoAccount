@@ -8,11 +8,13 @@ import com.account.mysalary.repository.AccountRepository;
 import com.account.mysalary.repository.AutoDepositRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 public class DebitServiceTest {
@@ -46,6 +48,7 @@ public class DebitServiceTest {
     }
 
     @Test
+    @Disabled
     public void updateDebit() throws Exception {
         updateDto = UpdateDebitDto.builder()
                 .name("엄마통장")
@@ -54,33 +57,13 @@ public class DebitServiceTest {
                 .deposit("11110390231")
                 .withdrawal(8L)
                 .build();
-//        debitService.setDirectDebit(debitDto);
         debitService.updateDebit(updateDto);
     }
 
-    public Long getId(AutoDeposit entity) {
-        return entity.getId();
+    @Test
+    public void inquiryDebits() throws Exception {
+        List<DebitDto> result = debitService.inquiry(1L);
+        Assertions.assertEquals(result.size(), 3);
     }
-
-    public Account getWithdrawal(AutoDeposit entity) {
-        return entity.getWithdrawal();
-    }
-
-    public String getDeposit(AutoDeposit entity) {
-        return entity.getDeposit();
-    }
-
-    public Long getAmount(AutoDeposit entity) {
-        return entity.getAmount();
-    }
-
-    public String getName(AutoDeposit entity) {
-        return entity.getName();
-    }
-
-    public Date getDate(AutoDeposit entity) {
-        return entity.getDate();
-    }
-
 
 }

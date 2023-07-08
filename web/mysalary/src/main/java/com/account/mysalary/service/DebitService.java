@@ -21,7 +21,6 @@ public class DebitService {
 
     private final AutoDepositRepository autoRepository;
     private final AccountRepository accountRepository;
-
     private final AutoDepositMapper depositMapper;
 
     @Transactional
@@ -55,6 +54,13 @@ public class DebitService {
                 .anyMatch(serial -> serial.equals(deposit));
     }
 
-
+    @Transactional
+    public List<DebitDto> inquiry(long id) throws Exception {
+        Optional<Account> withdrawal = accountRepository.findById(id);
+        Optional.of(withdrawal.get())
+                .orElseThrow(() -> new Exception("자동이체 정보가 없습니다!"));
+        List<AutoDeposit> result = autoRepository.findAutoDepositByWithdrawal(withdrawal.get());
+        return depositMapper.entitiesToDtos(result);
+    }
 
 }
