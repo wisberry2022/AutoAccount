@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("mysalary")
 public class DebitController {
 
     private final DebitService debitService;

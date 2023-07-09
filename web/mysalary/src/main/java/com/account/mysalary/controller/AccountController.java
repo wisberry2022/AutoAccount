@@ -13,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("mysalary")
 public class AccountController {
 
     private final AccountService accountService;
