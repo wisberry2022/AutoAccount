@@ -5,11 +5,17 @@ plugins {
 }
 
 
+
 group = 'com.account'
 version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '1.8'
+}
+
+bootJar {
+	archiveBaseName = "mysalary"
+	archiveVersion = "0.1.0"
 }
 
 configurations {
