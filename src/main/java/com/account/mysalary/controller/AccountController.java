@@ -1,6 +1,7 @@
 package com.account.mysalary.controller;
 
 import com.account.mysalary.common.util.HttpResponseUtil;
+import com.account.mysalary.dto.AccountDto;
 import com.account.mysalary.dto.OpenDto;
 import com.account.mysalary.dto.UpdateNameDto;
 import com.account.mysalary.service.AccountService;
@@ -24,10 +25,16 @@ public class AccountController {
         return new ResponseEntity(accountService.getAccounts(), HttpStatus.OK);
     }
 
-    @GetMapping("/api/v1/account/{name}")
-    public ResponseEntity getTotalExpense(@PathVariable String name) {
-        Long result = accountService.getTotalExpenses(name);
+    @GetMapping("/api/v1/account/amount/{id}")
+    public ResponseEntity getTotalExpense(@PathVariable String id) {
+        Long result = accountService.getTotalExpenses(Long.parseLong(id));
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/v1/account/{id}")
+    public ResponseEntity getAccountDetail(@PathVariable String id) throws Exception {
+        AccountDto result = accountService.getDetail(id);
+        return new ResponseEntity(result, HttpStatus.OK);
     }
 
     @PostMapping("/api/v1/account")
@@ -48,7 +55,7 @@ public class AccountController {
 
     @DeleteMapping("/api/v1/account")
     public ResponseEntity deleteAccount(@RequestBody Map<String, String> target) throws Exception {
-        accountService.deleteAccount(target.get("serial"));
+        accountService.deleteAccount(Long.parseLong(target.get("id")));
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(), HttpStatus.ACCEPTED);
     }
 

@@ -1,9 +1,6 @@
 package com.account.mysalary.service;
 
-import com.account.mysalary.dto.DebitDto;
-import com.account.mysalary.dto.OpenDto;
-import com.account.mysalary.dto.TransferDto;
-import com.account.mysalary.dto.UpdateNameDto;
+import com.account.mysalary.dto.*;
 import com.account.mysalary.repository.AccountRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -83,7 +80,7 @@ public class AccountServiceTest {
     @Test
     @Disabled
     public void setDirectDebit() {
-        Assertions.assertEquals(as.getTotalExpenses("일반통장"), 1000000);
+        Assertions.assertEquals(as.getTotalExpenses(6L), 1000000);
     }
 
     @Test
@@ -115,7 +112,13 @@ public class AccountServiceTest {
     @Test
     @Disabled
     public void deleteAccount() throws Exception {
-        as.deleteAccount("11220081774021");
+        as.deleteAccount(6L);
     }
 
+    @Test
+    @Disabled
+    public void getAccountDetail() throws Exception {
+        AccountDto result = as.getDetail("6");
+        System.out.println(result);
+    }
 }

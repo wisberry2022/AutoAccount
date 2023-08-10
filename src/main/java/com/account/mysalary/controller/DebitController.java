@@ -20,14 +20,20 @@ public class DebitController {
 
     private final DebitService debitService;
 
-    @GetMapping("/api/v1/debit/{withdrawal}")
-    public ResponseEntity inquiryDebit(@PathVariable String withdrawal) throws Exception {
+    @GetMapping("/api/v1/account/debit/{accountId}")
+    public ResponseEntity inquiryDebit(@PathVariable String accountId) throws Exception {
         try {
-            List<DebitDto>  result = debitService.inquiry(Long.parseLong(withdrawal));
+            List<DebitDto>  result = debitService.inquiry(Long.parseLong(accountId));
             return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.ACCEPTED);
         }catch(Exception e) {
             throw new Exception(e.getMessage());
         }
+    }
+
+    @GetMapping("/api/v1/debit/{debitId}")
+    public ResponseEntity getDebitDetail(@PathVariable String debitId) throws Exception {
+        DebitDto result = debitService.getDetail(Long.parseLong(debitId));
+        return new ResponseEntity(result, HttpStatus.OK);
     }
 
     @PostMapping("/api/v1/debit")

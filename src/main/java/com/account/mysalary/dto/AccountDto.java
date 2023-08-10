@@ -2,18 +2,19 @@ package com.account.mysalary.dto;
 
 import lombok.*;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-public class InquiryDto {
+public class AccountDto {
 
     private Long id;
     private String name;
     private String serial;
     private Long balance;
     private String owner;
+    private int debitCount;
 
 }

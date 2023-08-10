@@ -21,6 +21,7 @@ public class DebitService {
 
     private final AutoDepositRepository autoRepository;
     private final AccountRepository accountRepository;
+
     private final AutoDepositMapper depositMapper;
 
     @Transactional
@@ -61,6 +62,17 @@ public class DebitService {
                 .orElseThrow(() -> new Exception("자동이체 정보가 없습니다!"));
         List<AutoDeposit> result = autoRepository.findAutoDepositByWithdrawal(withdrawal.get());
         return depositMapper.entitiesToDtos(result);
+    }
+
+    @Transactional
+    public DebitDto getDetail(Long id) throws Exception {
+        Optional<AutoDeposit> debit = autoRepository.findById(id);
+
+        return depositMapper.entityToDto(
+                debit
+                        .orElseThrow(() -> new Exception("존재하지 않는 계좌입니다!"))
+        );
+
     }
 
     @Transactional

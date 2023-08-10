@@ -18,9 +18,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountService {
 
+    private final AccountMapper accountMapper;
+
     private final AccountRepository accountRepository;
     private final AutoDepositRepository autoRepository;
-    private final AccountMapper accountMapper;
+
 
     @Transactional
     public void openAccount(OpenDto dto) {
@@ -42,8 +44,8 @@ public class AccountService {
     }
 
     @Transactional
-    public long getTotalExpenses(String name) {
-        String serial = accountRepository.findSerialByName(name);
+    public long getTotalExpenses(Long id) {
+        String serial = accountRepository.findSerialById(id);
 
         List<TotalExpensesInfo> results = autoRepository.findAutoDepositsByWithdrawal(serial);
         return results.stream()
@@ -58,6 +60,16 @@ public class AccountService {
     }
 
     @Transactional
+    public AccountDto getDetail(String id) throws Exception {
+        Optional<Account> result = accountRepository.findById(Long.parseLong(id));
+
+        return accountMapper.entityToDto(
+                result
+                        .orElseThrow(() -> new Exception("등록되지 않은 계좌번호입니다!"))
+        );
+    }
+
+    @Transactional
     public void changeAccountName(UpdateNameDto dto) throws Exception {
         Optional<Account> target = accountRepository.findByName(dto.getBefore());
         Optional.of(target.get())
@@ -66,10 +78,10 @@ public class AccountService {
     }
 
     @Transactional
-    public void deleteAccount(String serial) throws Exception {
-        Optional<Account> target = accountRepository.findBySerial(serial);
+    public void deleteAccount(Long id) throws Exception {
+        Optional<Account> target = accountRepository.findById(id);
         Optional.of(target.get())
                 .orElseThrow(() -> new Exception("존재하지 않는 계좌입니다!"));
-        accountRepository.deleteBySerial(serial);
+        accountRepository.deleteById(id);
     }
 }

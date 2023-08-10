@@ -20,6 +20,9 @@ public interface AutoDepositMapper {
     @Mapping(target="date", source="dto.date")
     AutoDeposit dtoToEntity(DebitDto dto, Account entity);
 
+
+    DebitDto entityToDto(AutoDeposit entity);
+
     @Mapping(target="withdrawal", ignore = true)
     List<DebitDto> entitiesToDtos(List<AutoDeposit> entities);
 

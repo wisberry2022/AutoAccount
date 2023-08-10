@@ -68,4 +68,10 @@ public class DebitServiceTest {
         Assertions.assertEquals(result.size(), 3);
     }
 
+    @Test
+    public void getDetail() throws Exception {
+        DebitDto result = debitService.getDetail(4L);
+        System.out.println(result);
+    }
+
 }

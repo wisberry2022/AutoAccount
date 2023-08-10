@@ -9,7 +9,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class DebitDto {
+
+    private Long id;
 
     /* 출금 계좌 번호 */
     private String withdrawal;

@@ -1,5 +1,6 @@
 package com.account.mysalary.mapper;
 
+import com.account.mysalary.dto.AccountDto;
 import com.account.mysalary.dto.InquiryDto;
 import com.account.mysalary.dto.OpenDto;
 import com.account.mysalary.entity.Account;
@@ -15,5 +16,8 @@ public interface AccountMapper {
     Account dtoToEntity(OpenDto dto);
 
     List<InquiryDto> toDtos(List<Account> entities);
+
+    @Mapping(target="debitCount", expression="java(entity.getAutoDeposits().size())")
+    AccountDto entityToDto(Account entity);
 
 }
