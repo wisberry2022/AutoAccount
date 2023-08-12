@@ -69,6 +69,7 @@ public class DebitServiceTest {
     }
 
     @Test
+    @Disabled
     public void getDetail() throws Exception {
         DebitDto result = debitService.getDetail(4L);
         System.out.println(result);

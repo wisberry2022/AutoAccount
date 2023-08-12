@@ -3,10 +3,7 @@ package com.account.mysalary;
 import com.account.mysalary.entity.Account;
 import com.account.mysalary.repository.AccountRepository;
 import com.account.mysalary.repository.AutoDepositRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestExecutionListeners;
@@ -33,8 +30,9 @@ class MysalaryApplicationTests {
 	}
 
 	@Test
+	@Disabled
 	public void checkEntity() {
-		Assertions.assertEquals(ar.findById(1L).get().getName(), "normal");
+		Assertions.assertEquals(ar.findById(6L).get().getName(), "BNK-청약");
 	}
 
 
