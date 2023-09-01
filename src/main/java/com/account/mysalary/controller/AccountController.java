@@ -25,16 +25,16 @@ public class AccountController {
         return new ResponseEntity(accountService.getAccounts(), HttpStatus.OK);
     }
 
-    @GetMapping("/api/v1/account/amount/{id}")
-    public ResponseEntity getTotalExpense(@PathVariable String id) {
-        Long result = accountService.getTotalExpenses(Long.parseLong(id));
-        return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.OK);
-    }
-
     @GetMapping("/api/v1/account/{id}")
     public ResponseEntity getAccountDetail(@PathVariable String id) throws Exception {
         AccountDto result = accountService.getDetail(id);
         return new ResponseEntity(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/api/v1/account/{id}/amount")
+    public ResponseEntity getTotalExpense(@PathVariable String id) {
+        Long result = accountService.getTotalExpenses(Long.parseLong(id));
+        return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.OK);
     }
 
     @PostMapping("/api/v1/account")

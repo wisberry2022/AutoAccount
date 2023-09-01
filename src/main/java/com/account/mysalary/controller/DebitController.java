@@ -20,7 +20,7 @@ public class DebitController {
 
     private final DebitService debitService;
 
-    @GetMapping("/api/v1/account/debit/{accountId}")
+    @GetMapping("/api/v1/account/{accountId}/debit")
     public ResponseEntity inquiryDebit(@PathVariable String accountId) throws Exception {
         try {
             List<DebitDto>  result = debitService.inquiry(Long.parseLong(accountId));
