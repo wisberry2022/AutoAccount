@@ -24,7 +24,7 @@ public class DebitController {
     public ResponseEntity inquiryDebit(@PathVariable String accountId) throws Exception {
         try {
             List<DebitDto>  result = debitService.inquiry(Long.parseLong(accountId));
-            return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.ACCEPTED);
+            return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.OK);
         }catch(Exception e) {
             throw new Exception(e.getMessage());
         }

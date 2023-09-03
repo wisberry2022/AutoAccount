@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2df8860d-d9d9-4530-aa85-4304eb33f55d" name="변경" comment="08/12 upload [main][hotfix] test-code error hotfix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/DebitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/DebitController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/account/mysalary/service/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/account/mysalary/service/AccountServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/account/mysalary/service/DebitServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/account/mysalary/service/DebitServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +34,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="mysalary" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mysalary" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mysalary" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -66,7 +79,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/kitak/OneDrive/바탕 화면/develop/AutoAccount/back/backend",
+    "last_opened_file_path": "C:/Users/kitak/OneDrive/바탕 화면/develop/AutoAccount/back/backend/src/test/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,6 +88,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kitak\OneDrive\바탕 화면\develop\AutoAccount\back\backend\src\test\resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.MysalaryApplication">
     <configuration name="AccountServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -144,6 +162,28 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
+    <configuration name="backend [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="MysalaryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="mysalary.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.account.mysalary.MysalaryApplication" />
@@ -153,6 +193,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.backend [build]" />
         <item itemvalue="Gradle.backend [bootJar]" />
         <item itemvalue="Gradle.'mysalary.test'에 있는 테스트" />
         <item itemvalue="Gradle.AccountServiceTest" />
@@ -179,6 +220,8 @@
       <workItem from="1693021421677" duration="682000" />
       <workItem from="1693022715364" duration="616000" />
       <workItem from="1693562618701" duration="2222000" />
+      <workItem from="1693627569366" duration="2553000" />
+      <workItem from="1693698180282" duration="3806000" />
     </task>
     <servers />
   </component>

@@ -1,15 +1,13 @@
 package com.account.mysalary.service;
 
 import com.account.mysalary.dto.DebitDto;
+import com.account.mysalary.dto.OpenDto;
 import com.account.mysalary.dto.UpdateDebitDto;
 import com.account.mysalary.entity.Account;
 import com.account.mysalary.entity.AutoDeposit;
 import com.account.mysalary.repository.AccountRepository;
 import com.account.mysalary.repository.AutoDepositRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.AssertionErrors;
@@ -18,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DebitServiceTest {
 
     @Autowired
@@ -37,8 +37,15 @@ public class DebitServiceTest {
 
     }
 
-    @BeforeEach
-    public void updateDebitDto() {
+    @BeforeAll
+    public void updateDebitDto() throws Exception {
+        OpenDto target = OpenDto.builder()
+                .owner("왕인서")
+                .serial("1122008177401")
+                .balance(10000L)
+                .name("BNK-일반")
+                .build();
+        accountService.openAccount(target);
         debitDto = DebitDto.builder()
                 .date(new Date())
                 .withdrawal("1122008177401")
@@ -46,20 +53,31 @@ public class DebitServiceTest {
                 .amount(500000)
                 .name("적금통장")
                 .build();
+        debitService.setDirectDebit(debitDto);
     }
 
     @Test
-    @Disabled
+    @Order(1)
+    public void isRightDB() throws Exception {
+        System.out.println("isRightDB: " + debitService.inquiry(1L));
+    }
+
+
+    @Test
+    @Order(2)
     public void updateDebit() throws Exception {
         updateDto = UpdateDebitDto.builder()
                 .name("엄마통장")
                 .amount(100000L)
-                .beforeDeposit("8819203918321")
+                .beforeDeposit("3028558834191")
                 .deposit("11110390231")
-                .withdrawal(8L)
+                .withdrawal(1L)
                 .build();
         debitService.updateDebit(updateDto);
+        System.out.println("updateDebit: " + debitService.getDetail(1L));
     }
+
+
 
     @Test
     @Disabled

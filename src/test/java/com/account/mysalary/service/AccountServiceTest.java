@@ -33,6 +33,7 @@ public class AccountServiceTest {
     }
 
     @BeforeEach
+    @Disabled
     public void setFixture() {
         openDto = OpenDto.builder()
                 .owner("왕인서")
@@ -56,6 +57,7 @@ public class AccountServiceTest {
     @Test
     @Disabled
     public void openAccount() {
+
         Assertions.assertEquals(ar.findByName("일반통장").get().getName(), "일반통장");
     }
 
