@@ -15,5 +15,7 @@ public class InquiryDto {
     private String serial;
     private Long balance;
     private String owner;
+    private int debitCount;
+    private long expense;
 
 }

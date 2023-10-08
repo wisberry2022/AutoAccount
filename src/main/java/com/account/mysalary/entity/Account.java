@@ -6,6 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Getter
@@ -45,6 +46,13 @@ public class Account {
 
     public void changeName(String name) {
         this.name = name;
+    }
+
+    public long getTotalExpense() {
+        return Optional.ofNullable(autoDeposits)
+                .orElseGet(this::getAutoDeposits).stream()
+                .map(AutoDeposit::getAmount)
+                .reduce(0L, (a,b) -> a+=b);
     }
 
 }

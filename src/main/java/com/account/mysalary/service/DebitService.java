@@ -12,8 +12,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,14 +37,9 @@ public class DebitService {
 
     @Transactional
     public void updateDebit(UpdateDebitDto dto) throws Exception {
-        Optional<Account> account = accountRepository.findById(dto.getWithdrawal());
-        Optional.of(account.get())
-                .orElseThrow(() -> new Exception("출금계좌가 등록되어 있지 않습니다!"));
-        List<AutoDeposit> debits = autoRepository.findAutoDepositByWithdrawal(account.get());
-
-        debits.stream()
-                .filter(entity -> entity.getDeposit().equals(dto.getBeforeDeposit()))
-                .forEach(entity -> entity.changeDebit(dto));
+        Optional<AutoDeposit> debit = autoRepository.findById(dto.getId());
+        debit.orElseThrow(() -> new Exception("등록되지 않은 자동이체 계좌입니다!"))
+                .changeDebit(dto);
     }
 
     @Transactional
@@ -61,18 +58,9 @@ public class DebitService {
         Optional.of(withdrawal.get())
                 .orElseThrow(() -> new Exception("자동이체 정보가 없습니다!"));
         List<AutoDeposit> result = autoRepository.findAutoDepositByWithdrawal(withdrawal.get());
-        return depositMapper.entitiesToDtos(result);
-    }
-
-    @Transactional
-    public DebitDto getDetail(Long id) throws Exception {
-        Optional<AutoDeposit> debit = autoRepository.findById(id);
-
-        return depositMapper.entityToDto(
-                debit
-                        .orElseThrow(() -> new Exception("존재하지 않는 계좌입니다!"))
-        );
-
+        return depositMapper.entitiesToDtos(result).stream()
+                .sorted(Comparator.comparing(DebitDto::getId))
+                .collect(Collectors.toList());
     }
 
     @Transactional

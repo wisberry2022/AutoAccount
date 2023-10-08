@@ -79,11 +79,6 @@ public class AccountServiceTest {
         Assertions.assertEquals(ar.findBalanceByName("일반통장"), 150000);
     }
 
-    @Test
-    @Disabled
-    public void setDirectDebit() {
-        Assertions.assertEquals(as.getTotalExpenses(6L), 1000000);
-    }
 
     @Test
     @Disabled
@@ -117,10 +112,4 @@ public class AccountServiceTest {
         as.deleteAccount(6L);
     }
 
-    @Test
-    @Disabled
-    public void getAccountDetail() throws Exception {
-        AccountDto result = as.getDetail("6");
-        System.out.println(result);
-    }
 }

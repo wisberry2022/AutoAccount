@@ -11,8 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +23,6 @@ public class AccountService {
     private final AccountMapper accountMapper;
 
     private final AccountRepository accountRepository;
-    private final AutoDepositRepository autoRepository;
 
 
     @Transactional
@@ -44,37 +45,19 @@ public class AccountService {
     }
 
     @Transactional
-    public long getTotalExpenses(Long id) {
-        String serial = accountRepository.findSerialById(id);
-
-        List<TotalExpensesInfo> results = autoRepository.findAutoDepositsByWithdrawal(serial);
-        return results.stream()
-                .map(TotalExpensesInfo::getAmount)
-                .reduce(0L, (a,b) -> a+=b);
-    }
-
-    @Transactional
     public List<InquiryDto> getAccounts() {
         List<Account> accounts = accountRepository.findAll();
-        return accountMapper.toDtos(accounts);
-    }
-
-    @Transactional
-    public AccountDto getDetail(String id) throws Exception {
-        Optional<Account> result = accountRepository.findById(Long.parseLong(id));
-
-        return accountMapper.entityToDto(
-                result
-                        .orElseThrow(() -> new Exception("등록되지 않은 계좌번호입니다!"))
-        );
+        return accountMapper.toInquiryDto(accounts).stream()
+                .sorted(Comparator.comparing(InquiryDto::getId))
+                .collect(Collectors.toList());
     }
 
     @Transactional
     public void changeAccountName(UpdateNameDto dto) throws Exception {
-        Optional<Account> target = accountRepository.findByName(dto.getBefore());
+        Optional<Account> target = accountRepository.findById(dto.getId());
         Optional.of(target.get())
                 .orElseThrow(() -> new Exception("존재하지 않는 계좌입니다!"))
-                .changeName(dto.getAfter());
+                .changeName(dto.getName());
     }
 
     @Transactional
