@@ -10,7 +10,6 @@ import lombok.*;
 @ToString
 public class UpdateNameDto {
 
-    private String before;
-    private String after;
-
+    private Long id;
+    private String name;
 }

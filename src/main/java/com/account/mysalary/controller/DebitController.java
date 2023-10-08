@@ -30,12 +30,6 @@ public class DebitController {
         }
     }
 
-    @GetMapping("/api/v1/debit/{debitId}")
-    public ResponseEntity getDebitDetail(@PathVariable String debitId) throws Exception {
-        DebitDto result = debitService.getDetail(Long.parseLong(debitId));
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
-
     @PostMapping("/api/v1/debit")
     public ResponseEntity assignTransfer(@RequestBody DebitDto debit) throws Exception {
         if(debitService.isAssignedTransfer(debit)) {
@@ -45,7 +39,7 @@ public class DebitController {
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(debit), HttpStatus.ACCEPTED);
     }
 
-    @PutMapping("/api/v1/debit")
+    @PatchMapping("/api/v1/debit")
     public ResponseEntity changeDebit(@RequestBody UpdateDebitDto update) throws Exception {
         debitService.updateDebit(update);
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(update), HttpStatus.ACCEPTED);

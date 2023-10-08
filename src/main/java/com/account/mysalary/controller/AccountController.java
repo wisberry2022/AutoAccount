@@ -25,18 +25,6 @@ public class AccountController {
         return new ResponseEntity(accountService.getAccounts(), HttpStatus.OK);
     }
 
-    @GetMapping("/api/v1/account/{id}")
-    public ResponseEntity getAccountDetail(@PathVariable String id) throws Exception {
-        AccountDto result = accountService.getDetail(id);
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
-
-    @GetMapping("/api/v1/account/{id}/amount")
-    public ResponseEntity getTotalExpense(@PathVariable String id) {
-        Long result = accountService.getTotalExpenses(Long.parseLong(id));
-        return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.OK);
-    }
-
     @PostMapping("/api/v1/account")
     public ResponseEntity assignAccount(@RequestBody OpenDto account) throws Exception {
         try {
@@ -47,7 +35,7 @@ public class AccountController {
         }
     }
 
-    @PutMapping("/api/v1/account")
+    @PatchMapping("/api/v1/account")
     public ResponseEntity changeAccountName(@RequestBody UpdateNameDto dto) throws Exception {
         accountService.changeAccountName(dto);
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(), HttpStatus.ACCEPTED);
