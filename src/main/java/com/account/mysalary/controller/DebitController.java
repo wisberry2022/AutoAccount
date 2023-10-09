@@ -20,16 +20,6 @@ public class DebitController {
 
     private final DebitService debitService;
 
-    @GetMapping("/api/v1/account/{accountId}/debit")
-    public ResponseEntity inquiryDebit(@PathVariable String accountId) throws Exception {
-        try {
-            List<DebitDto>  result = debitService.inquiry(Long.parseLong(accountId));
-            return new ResponseEntity(HttpResponseUtil.getSuccessCode(result), HttpStatus.OK);
-        }catch(Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
-
     @PostMapping("/api/v1/debit")
     public ResponseEntity assignTransfer(@RequestBody DebitDto debit) throws Exception {
         if(debitService.isAssignedTransfer(debit)) {

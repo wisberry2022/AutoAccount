@@ -1,5 +1,7 @@
 package com.account.mysalary.entity;
 
+import com.account.mysalary.dto.DebitDto;
+import com.account.mysalary.mapper.AutoDepositMapper;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 

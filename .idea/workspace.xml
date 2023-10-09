@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2df8860d-d9d9-4530-aa85-4304eb33f55d" name="변경" comment="08/12 upload [main][hotfix] test-code error hotfix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/DebitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/DebitController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/InquiryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/InquiryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/UpdateDebitDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/UpdateDebitDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/UpdateNameDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/UpdateNameDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/entity/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/mapper/AccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/mapper/AccountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/service/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/service/DebitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/service/DebitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/account/mysalary/service/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/account/mysalary/service/AccountServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +227,8 @@
       <workItem from="1693698180282" duration="3806000" />
       <workItem from="1693825462479" duration="2103000" />
       <workItem from="1696116025622" duration="8000" />
-      <workItem from="1696726325376" duration="7336000" />
+      <workItem from="1696726325376" duration="7695000" />
+      <workItem from="1696811465731" duration="2818000" />
     </task>
     <servers />
   </component>

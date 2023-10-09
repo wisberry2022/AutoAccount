@@ -2,6 +2,8 @@ package com.account.mysalary.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -17,5 +19,6 @@ public class InquiryDto {
     private String owner;
     private int debitCount;
     private long expense;
+    private List<DebitDto> debits;
 
 }

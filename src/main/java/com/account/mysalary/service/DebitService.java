@@ -53,17 +53,6 @@ public class DebitService {
     }
 
     @Transactional
-    public List<DebitDto> inquiry(long id) throws Exception {
-        Optional<Account> withdrawal = accountRepository.findById(id);
-        Optional.of(withdrawal.get())
-                .orElseThrow(() -> new Exception("자동이체 정보가 없습니다!"));
-        List<AutoDeposit> result = autoRepository.findAutoDepositByWithdrawal(withdrawal.get());
-        return depositMapper.entitiesToDtos(result).stream()
-                .sorted(Comparator.comparing(DebitDto::getId))
-                .collect(Collectors.toList());
-    }
-
-    @Transactional
     public void deleteDebit(Long id) throws Exception {
         Optional<AutoDeposit> target = autoRepository.findById(id);
         Optional.of(target.get())
