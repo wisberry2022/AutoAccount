@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2df8860d-d9d9-4530-aa85-4304eb33f55d" name="변경" comment="08/12 upload [main][hotfix] test-code error hotfix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/DebitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/controller/DebitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/InquiryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/dto/InquiryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/entity/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/mapper/AccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/mapper/AccountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/account/mysalary/service/DebitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/account/mysalary/service/DebitService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,23 +72,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kitak/OneDrive/바탕 화면/develop/AutoAccount/back/backend/src/test/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;35b1cb26e93c2bbeb6234d73957923a3&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/kitak/OneDrive/바탕 화면/develop/AutoAccount/back/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "35b1cb26e93c2bbeb6234d73957923a3",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kitak\OneDrive\바탕 화면\develop\AutoAccount\back\backend\src\test\resources" />
@@ -229,6 +228,13 @@
       <workItem from="1696116025622" duration="8000" />
       <workItem from="1696726325376" duration="7695000" />
       <workItem from="1696811465731" duration="2818000" />
+      <workItem from="1696931598695" duration="593000" />
+      <workItem from="1697017605773" duration="20000" />
+      <workItem from="1697336903500" duration="325000" />
+      <workItem from="1697448953079" duration="1885000" />
+      <workItem from="1697536637650" duration="1261000" />
+      <workItem from="1697622719856" duration="1266000" />
+      <workItem from="1697712608075" duration="556000" />
     </task>
     <servers />
   </component>

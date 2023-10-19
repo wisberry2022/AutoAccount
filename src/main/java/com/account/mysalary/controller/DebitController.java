@@ -35,9 +35,9 @@ public class DebitController {
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(update), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/api/v1/debit")
-    public ResponseEntity deleteDebit(@RequestBody DebitDeleteDto dto) throws Exception {
-        debitService.deleteDebit(Long.parseLong(dto.getId()));
+    @DeleteMapping("/api/v1/debit/{id}")
+    public ResponseEntity deleteDebit(@PathVariable String id) throws Exception {
+        debitService.deleteDebit(Long.parseLong(id));
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(), HttpStatus.ACCEPTED);
     }
 }

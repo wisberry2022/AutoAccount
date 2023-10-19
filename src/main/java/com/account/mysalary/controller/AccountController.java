@@ -41,9 +41,9 @@ public class AccountController {
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/api/v1/account")
-    public ResponseEntity deleteAccount(@RequestBody Map<String, String> target) throws Exception {
-        accountService.deleteAccount(Long.parseLong(target.get("id")));
+    @DeleteMapping("/api/v1/account/{id}")
+    public ResponseEntity deleteAccount(@PathVariable String id) throws Exception {
+        accountService.deleteAccount(Long.parseLong(id));
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(), HttpStatus.ACCEPTED);
     }
 
