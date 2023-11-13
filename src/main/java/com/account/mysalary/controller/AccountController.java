@@ -27,12 +27,8 @@ public class AccountController {
 
     @PostMapping("/api/v1/account")
     public ResponseEntity assignAccount(@RequestBody OpenDto account) throws Exception {
-        try {
-            accountService.openAccount(account);
-            return new ResponseEntity(HttpResponseUtil.getSuccessCode(account), HttpStatus.ACCEPTED);
-        }catch(Exception e) {
-            throw new Exception("Invalid Account Data!");
-        }
+        accountService.openAccount(account);
+        return new ResponseEntity(HttpResponseUtil.getSuccessCode(account), HttpStatus.ACCEPTED);
     }
 
     @PatchMapping("/api/v1/account")

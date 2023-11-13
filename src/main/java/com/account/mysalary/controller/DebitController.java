@@ -22,15 +22,13 @@ public class DebitController {
 
     @PostMapping("/api/v1/debit")
     public ResponseEntity assignTransfer(@RequestBody DebitDto debit) throws Exception {
-        if(debitService.isAssignedTransfer(debit)) {
-            throw new Exception("해당 계좌는 이미 자동이체 등록되어있는 계좌입니다!");
-        }
         debitService.setDirectDebit(debit);
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(debit), HttpStatus.ACCEPTED);
     }
 
     @PatchMapping("/api/v1/debit")
     public ResponseEntity changeDebit(@RequestBody UpdateDebitDto update) throws Exception {
+        System.out.println("자동이체 수정 " + update);
         debitService.updateDebit(update);
         return new ResponseEntity(HttpResponseUtil.getSuccessCode(update), HttpStatus.ACCEPTED);
     }
