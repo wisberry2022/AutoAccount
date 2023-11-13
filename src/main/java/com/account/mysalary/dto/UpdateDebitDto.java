@@ -10,11 +10,9 @@ import lombok.*;
 @ToString
 public class UpdateDebitDto {
 
-//    private Long withdrawal;
+    private Long withdrawal;
     private Long id;
     private Long amount;
-//    private String beforeDeposit;
-    private String deposit;
     private String name;
 
 }

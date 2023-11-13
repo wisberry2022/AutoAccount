@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.OptionalDataException;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -24,9 +27,12 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
 
-
     @Transactional
-    public void openAccount(OpenDto dto) {
+    public void openAccount(OpenDto dto) throws Exception {
+        dto.isThisNull();
+        if(accountRepository.findBySerial(dto.getSerial()).isPresent()) {
+            throw new Exception("이미 등록된 계좌번호입니다!");
+        }
         accountRepository.save(accountMapper.dtoToEntity(dto));
     }
 

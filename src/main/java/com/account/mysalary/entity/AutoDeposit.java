@@ -36,7 +36,6 @@ public class AutoDeposit {
     private Date date;
 
     public void changeDebit(UpdateDebitDto dto) {
-        Optional.of(dto).ifPresent(update -> this.deposit = update.getDeposit());
         Optional.of(dto).ifPresent(update -> this.name = update.getName());
         Optional.of(dto).ifPresent(update -> this.amount = update.getAmount());
     }

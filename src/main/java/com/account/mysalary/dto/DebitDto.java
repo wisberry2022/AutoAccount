@@ -2,6 +2,7 @@ package com.account.mysalary.dto;
 
 import lombok.*;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 
 @Getter
@@ -13,16 +14,19 @@ import java.util.Date;
 public class DebitDto {
 
     private Long id;
-
-    /* 출금 계좌 번호 */
     private String withdrawal;
-    
-    /* 입금 계좌 번호 */
     private String deposit;
-
-    /* 입금 계좌 이름 */
     private String name;
     private long amount;
     private Date date;
+
+    public void isThisNull() throws Exception {
+        Field[] fields = this.getClass().getDeclaredFields();
+        for(Field field:fields) {
+            if(field.get(this) == null) {
+                throw new Exception("필수값을 미입력하였습니다!");
+            };
+        }
+    }
 
 }

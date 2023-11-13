@@ -63,7 +63,7 @@ public class AccountServiceTest {
 
     @Test
     @Disabled
-    public void deposit() {
+    public void deposit() throws Exception {
         as.openAccount(openDto);
         as.deposit(transferDto);
         Assertions.assertEquals(ar.findBalanceByName("일반통장"), 300000);
@@ -71,7 +71,7 @@ public class AccountServiceTest {
 
     @Test
     @Disabled
-    public void withdrawal() {
+    public void withdrawal() throws Exception {
         as.openAccount(openDto);
         as.deposit(transferDto);
         transferDto.setAmount(150000);
@@ -82,7 +82,7 @@ public class AccountServiceTest {
 
     @Test
     @Disabled
-    public void getAccounts() {
+    public void getAccounts() throws Exception {
         as.openAccount(openDto);
         openDto.setSerial("302930910298");
         openDto.setName("취미통장");

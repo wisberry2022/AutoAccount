@@ -28,15 +28,22 @@ public class DebitService {
 
     @Transactional
     public void setDirectDebit(DebitDto dto) throws Exception {
-        Account withdrawal = Optional.of(accountRepository.findBySerial(dto.getWithdrawal()))
-                .orElseThrow(() -> new Exception("등록되지 않은 계좌입니다!"))
-                .get();
+        dto.isThisNull();
+        Account withdrawal = accountRepository.findBySerial(dto.getWithdrawal())
+                .orElseThrow(() -> new Exception("등록되지 않은 계좌입니다!"));
+
+        List<AutoDeposit> filtered = withdrawal.getAutoDeposits().stream()
+                .filter(autoDeposit -> autoDeposit.getDeposit().equals(dto.getDeposit()))
+                .collect(Collectors.toList());
+
+        if(filtered.size() > 0) throw new Exception("이미 등록된 자동이체 계좌입니다!");
 
         autoRepository.save(depositMapper.dtoToEntity(dto, withdrawal));
     }
 
     @Transactional
     public void updateDebit(UpdateDebitDto dto) throws Exception {
+        accountRepository.findById(dto.getWithdrawal()).orElseThrow(() -> new Exception("등록되지 않은 계좌입니다!"));
         Optional<AutoDeposit> debit = autoRepository.findById(dto.getId());
         debit.orElseThrow(() -> new Exception("등록되지 않은 자동이체 계좌입니다!"))
                 .changeDebit(dto);
